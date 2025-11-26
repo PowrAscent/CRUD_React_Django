@@ -65,9 +65,9 @@ WSGI_APPLICATION = 'empleados_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'empleados_django',
+        'NAME': 'eva4',
         'USER': 'root',
-        'PASSWORD': 'inacap',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }

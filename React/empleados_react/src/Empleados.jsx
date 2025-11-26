@@ -75,12 +75,21 @@ function Empleados() {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(formData),
-        
 			});
-      console.log(res);
 			if (!res.ok) throw new Error('Error al actualizar Empleado');
 			setEditId(null);
-			setFormData({ nombre: '', edad: '', nacionalidad: '' });
+			setFormData({
+				nombre: '',
+				apellido: '',
+				puesto: '',
+				salario: '',
+				fecha_ingreso: '',
+				activo: '',
+				telefono: '',
+				direccion: '',
+				departamento: '',
+				email: '',
+			});
 			getEmpleados();
 		} catch (error) {
 			console.error(error);
@@ -101,6 +110,7 @@ function Empleados() {
 
 	// listar
 	const editarEmpleado = (empleado) => {
+		console.log(empleado);
 		setEditId(empleado.id);
 		setFormData({
 			nombre: empleado.nombre,
