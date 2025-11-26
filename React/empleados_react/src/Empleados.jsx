@@ -301,7 +301,6 @@ function Empleados() {
 						</thead>
 						<tbody>
 							{empleados.length > 0 ? (
-								//cambiar la "p" por "Empleados"
 								empleados.map((e) => (
 									<tr key={e.id}>
 										<td>{e.id}</td>
