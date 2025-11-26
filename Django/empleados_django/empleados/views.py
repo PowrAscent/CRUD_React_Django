@@ -20,3 +20,13 @@ class EmpleadosGetPost(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class EmpleadoGetPutDelete(APIView):
+
+    def put(self, request, id):
+        empleado = Empleados.objects.get(id=id)
+        serializer = EmpleadoSerializer(empleado, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

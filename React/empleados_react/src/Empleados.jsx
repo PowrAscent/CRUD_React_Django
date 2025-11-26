@@ -75,7 +75,9 @@ function Empleados() {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(formData),
+        
 			});
+      console.log(res);
 			if (!res.ok) throw new Error('Error al actualizar Empleado');
 			setEditId(null);
 			setFormData({ nombre: '', edad: '', nacionalidad: '' });
