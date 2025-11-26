@@ -30,3 +30,12 @@ class EmpleadoGetPutDelete(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, id):
+        try:
+            empleado = Empleados.objects.get(id=id)
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        empleado.delete()
+        return Response(status=status.HTTP_200_OK)
