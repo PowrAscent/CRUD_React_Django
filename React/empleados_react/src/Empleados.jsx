@@ -44,7 +44,6 @@ function Empleados() {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-
 				body: JSON.stringify(data),
 			});
 			if (!res.ok) throw new Error('Error al crear Empleado');
@@ -99,12 +98,19 @@ function Empleados() {
 	};
 
 	// listar
-	const editarEmpleado = (Empleado) => {
-		setEditId(Empleado.id);
+	const editarEmpleado = (empleado) => {
+		setEditId(empleado.id);
 		setFormData({
-			nombre: Empleado.nombre,
-			edad: Empleado.edad,
-			nacionalidad: Empleado.nacionalidad,
+			nombre: empleado.nombre,
+			apellido: empleado.apellido,
+			puesto: empleado.puesto,
+			salario: empleado.salario,
+			fecha_ingreso: empleado.fecha_ingreso,
+			activo: empleado.activo,
+			telefono: empleado.telefono,
+			direccion: empleado.direccion,
+			departamento: empleado.departamento,
+			email: empleado.email,
 		});
 	};
 
@@ -174,8 +180,8 @@ function Empleados() {
 							<input
 								type="date"
 								className="form-control"
-								value={formData.fechaIngreso}
-								onChange={(e) => setFormData({ ...formData, fechaIngreso: e.target.value })}
+								value={formData.fecha_ingreso}
+								onChange={(e) => setFormData({ ...formData, fecha_ingreso: e.target.value })}
 								required
 							/>
 						</div>
@@ -249,7 +255,18 @@ function Empleados() {
 								className="btn btn-secondary me-2"
 								onClick={() => {
 									setEditId(null);
-									setFormData({ nombre: '' });
+									setFormData({
+										nombre: '',
+										apellido: '',
+										puesto: '',
+										salario: '',
+										fecha_ingreso: '',
+										activo: '',
+										telefono: '',
+										direccion: '',
+										departamento: '',
+										email: '',
+									});
 								}}
 							>
 								Cancelar
@@ -285,24 +302,24 @@ function Empleados() {
 						<tbody>
 							{empleados.length > 0 ? (
 								//cambiar la "p" por "Empleados"
-								empleados.map((p) => (
-									<tr key={p.id}>
-										<td>{p.id}</td>
-										<td>{p.nombre}</td>
-										<td>{p.apellido}</td>
-										<td>{p.puesto}</td>
-										<td>{p.salario}</td>
-										<td>{p.fecha_ingreso}</td>
-										<td>{p.activo}</td>
-										<td>{p.telefono}</td>
-										<td>{p.direccion}</td>
-										<td>{p.departamento}</td>
-										<td>{p.email}</td>
+								empleados.map((e) => (
+									<tr key={e.id}>
+										<td>{e.id}</td>
+										<td>{e.nombre}</td>
+										<td>{e.apellido}</td>
+										<td>{e.puesto}</td>
+										<td>{e.salario}</td>
+										<td>{e.fecha_ingreso}</td>
+										<td>{e.activo ? 'Si' : 'No'}</td>
+										<td>{e.telefono}</td>
+										<td>{e.direccion}</td>
+										<td>{e.departamento}</td>
+										<td>{e.email}</td>
 										<td>
-											<button className="btn btn-sm btn-warning me-2" onClick={() => editarEmpleado(p)}>
+											<button className="btn btn-sm btn-warning me-2" onClick={() => editarEmpleado(e)}>
 												Editar
 											</button>
-											<button className="btn btn-sm btn-danger" onClick={() => eliminarEmpleado(p.id)}>
+											<button className="btn btn-sm btn-danger" onClick={() => eliminarEmpleado(e.id)}>
 												Eliminar
 											</button>
 										</td>
