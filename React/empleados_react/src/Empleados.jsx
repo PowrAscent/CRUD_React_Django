@@ -110,7 +110,7 @@ function Empleados() {
             </div>
 
             <div className="col-md-4">
-              <label className="form-label">Edad</label>
+              <label className="form-label">Apellido</label>
               <input
                 type="number"
                 className="form-control"
@@ -123,7 +123,91 @@ function Empleados() {
             </div>
 
             <div className="col-md-4">
-              <label className="form-label">Nacionalidad</label>
+              <label className="form-label">Puesto</label>
+              <input
+                type="text"
+                className="form-control"
+                value={formData.nacionalidad}
+                onChange={(e) =>
+                  setFormData({ ...formData, nacionalidad: e.target.value })
+                }
+                required
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Salario</label>
+              <input
+                type="text"
+                className="form-control"
+                value={formData.nacionalidad}
+                onChange={(e) =>
+                  setFormData({ ...formData, nacionalidad: e.target.value })
+                }
+                required
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Fecha de Ingreso</label>
+              <input
+                type="text"
+                className="form-control"
+                value={formData.nacionalidad}
+                onChange={(e) =>
+                  setFormData({ ...formData, nacionalidad: e.target.value })
+                }
+                required
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Activo</label>
+              <input
+                type="text"
+                className="form-control"
+                value={formData.nacionalidad}
+                onChange={(e) =>
+                  setFormData({ ...formData, nacionalidad: e.target.value })
+                }
+                required
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Teléfono</label>
+              <input
+                type="text"
+                className="form-control"
+                value={formData.nacionalidad}
+                onChange={(e) =>
+                  setFormData({ ...formData, nacionalidad: e.target.value })
+                }
+                required
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Direccion</label>
+              <input
+                type="text"
+                className="form-control"
+                value={formData.nacionalidad}
+                onChange={(e) =>
+                  setFormData({ ...formData, nacionalidad: e.target.value })
+                }
+                required
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Departamento</label>
+              <input
+                type="text"
+                className="form-control"
+                value={formData.nacionalidad}
+                onChange={(e) =>
+                  setFormData({ ...formData, nacionalidad: e.target.value })
+                }
+                required
+              />
+            </div>
+            <div className="col-md-4">
+              <label className="form-label">Email</label>
               <input
                 type="text"
                 className="form-control"
@@ -163,20 +247,35 @@ function Empleados() {
             <thead className="table-light">
               <tr>
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>Edad</th>
-                <th>Nacionalidad</th>
-                <th>Acciones</th>
+                <th>nombre</th>
+                <th>apellido</th>
+                <th>puesto</th>
+                <th>salario</th>
+                <th>fecha_ingreso</th>
+                <th>activo</th>
+                <th>telefono</th>
+                <th>direccion</th>
+                <th>departamento</th>
+                <th>email</th>
+     
               </tr>
             </thead>
             <tbody>
               {Empleados.length > 0 ? (
+              //cambiar la "p" por "Empleados"
                 Empleados.map((p) => (
                   <tr key={p.id}>
                     <td>{p.id}</td>
                     <td>{p.nombre}</td>
-                    <td>{p.edad}</td>
-                    <td>{p.nacionalidad}</td>
+                    <td>{p.apellido}</td>
+                    <td>{p.puesto}</td>
+                    <td>{p.salario}</td>
+                    <td>{p.fecha_ingreso}</td>
+                    <td>{p.activo}</td>
+                    <td>{p.telefono}</td>
+                    <td>{p.direccion}</td>
+                    <td>{p.departamento}</td>
+                    <td>{p.email}</td>
                     <td>
                       <button
                         className="btn btn-sm btn-warning me-2"
@@ -195,8 +294,8 @@ function Empleados() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="5" className="text-center text-muted">
-                    No hay Empleados registrados.
+                  <td colSpan="11" className="text-center text-muted">
+                    No hay empleados registrados.
                   </td>
                 </tr>
               )}
@@ -209,3 +308,5 @@ function Empleados() {
 }
 
 export default Empleados;
+
+
