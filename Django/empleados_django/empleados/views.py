@@ -12,3 +12,11 @@ class EmpleadosGetPost(APIView):
         empleados = Empleados.objects.all()
         serializer = EmpleadoSerializer(empleados, many=True)
         return Response(serializer.data)
+
+    def post(self, request):
+        serializer = EmpleadoSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
